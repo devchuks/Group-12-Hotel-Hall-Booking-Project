@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $stmt = $pdo->prepare("INSERT INTO bookings (user_id, hall_id, date, session, status) VALUES (?, ?, ?, ?, 'pending')");
         if ($stmt->execute([$user_id, $hall_id, $date, $session])) {
             $booking_id = $pdo->lastInsertId(); // Get the ID of the newly created booking
-            // Reduce hall capacity by 1
+        // Reduce hall capacity by 1
         $stmt = $pdo->prepare("UPDATE halls SET capacity = capacity - 1 WHERE id = ?");
         $stmt->execute([$hall_id]);
             echo json_encode(['status' => 'success', 'message' => 'Booking successful!', 'booking_id' => $booking_id]);
