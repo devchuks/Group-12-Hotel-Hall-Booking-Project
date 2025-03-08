@@ -56,6 +56,29 @@ try {
     <h2>Welcome, User!</h2>
     <button onclick="logout()">Logout</button>
 
+    <!-- Hall Capacities -->
+<h3>Hall Capacities</h3>
+<table id="hallCapacities">
+    <thead>
+        <tr>
+            <th>Hall</th>
+            <th>Capacity</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php
+        $stmt = $pdo->prepare("SELECT * FROM halls");
+        $stmt->execute();
+        $halls = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        foreach ($halls as $hall): ?>
+            <tr>
+                <td><?= htmlspecialchars($hall['name']) ?></td>
+                <td><?= htmlspecialchars($hall['capacity']) ?></td>
+            </tr>
+        <?php endforeach; ?>
+    </tbody>
+</table>
+
     <!-- Booking Form -->
     <h3>Book a Hall</h3>
     <form id="bookingForm">

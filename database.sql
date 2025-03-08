@@ -34,6 +34,7 @@ CREATE TABLE payments (
     payment_method VARCHAR(50) NOT NULL,
     transaction_id VARCHAR(100) NOT NULL,
     payment_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    payment_status VARCHAR(50) NOT NULL,
     FOREIGN KEY (booking_id) REFERENCES bookings(id)
 );
 

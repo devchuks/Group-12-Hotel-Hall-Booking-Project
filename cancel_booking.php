@@ -33,6 +33,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 // Log the refund in the refunds table
                 $stmt = $pdo->prepare("INSERT INTO refunds (payment_id, refund_amount) VALUES (?, ?)");
                 $stmt->execute([$payment['id'], $refund_amount]);
+                
+                // Increase hall capacity by 1
+                $stmt = $pdo->prepare("UPDATE halls SET capacity = capacity + 1 WHERE id = ?");
+                $stmt->execute([$booking['hall_id']]);
 
                 echo json_encode(['status' => 'success', 'message' => "Booking cancelled successfully. You will receive a 50% refund of $" . $refund_amount . "."]);
             } else {
