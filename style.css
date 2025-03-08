@@ -1,0 +1,190 @@
+/* Improved style.css for Hotel Booking Site */
+
+/* Global Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f8f9fa;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Main Container */
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: left; /* Align content to the left */
+}
+
+/* Header */
+header {
+    background: linear-gradient(135deg, #4a4e69, #22223b);
+    color: #fff;
+    padding: 20px;
+    text-align: left;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Navigation */
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 15px 0 0;
+}
+
+nav ul li {
+    display: inline-block;
+    margin-right: 15px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: color 0.3s ease-in-out;
+}
+
+nav ul li a:hover {
+    color: #f4a261;
+}
+
+/* Main Content */
+main {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+section {
+    margin-bottom: 30px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+section h2 {
+    color: #22223b;
+    border-bottom: 3px solid #4a4e69;
+    padding-bottom: 8px;
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+/* Table Styles */
+table {
+    width: 80%; /* Limit table width */
+    border-collapse: collapse;
+    margin: 15px 0;
+}
+
+table th, table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 2px solid #ddd;
+}
+
+table th {
+    background: #22223b;
+    color: #fff;
+}
+
+table tr:hover {
+    background: #f1f1f1;
+}
+
+/* Buttons */
+button {
+    background: #22223b;
+    color: #fff;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.3s ease-in-out;
+}
+
+button:hover {
+    background: #4a4e69;
+}
+
+/* Form Styles */
+form label {
+    display: block;
+    margin: 12px 0 6px;
+    font-weight: 600;
+}
+
+form input, form select {
+    width: 100%;
+    max-width: 400px;
+    padding: 10px;
+    margin-bottom: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: border 0.3s ease-in-out;
+}
+
+form input:focus, form select:focus {
+    border-color: #4a4e69;
+    outline: none;
+}
+
+form button {
+    margin-top: 10px;
+}
+
+/* Footer */
+footer {
+    background: #22223b;
+    color: #fff;
+    text-align: left;
+    padding: 15px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    font-size: 0.9rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container, main {
+        max-width: 100%;
+        padding: 15px;
+    }
+
+    table {
+        width: 100%; /* Allow full width on smaller screens */
+    }
+}
+
+#hallCapacities {
+    width: auto; /* Makes the table as wide as its content */
+    margin-left: 0; /* Aligns the table to the left */
+    margin-top: 10px; /* Adds some spacing from the title */
+    border-collapse: collapse;
+}
+
+#hallCapacities th, 
+#hallCapacities td {
+    padding: 10px 20px; /* Adjusts padding for better spacing */
+    text-align: left;
+}
+
+#hallCapacities th {
+    background: #22223b;
+    color: #fff;
+    font-weight: bold;
+}
+
+#hallCapacities tr:hover {
+    background: #f1f1f1;
+}
