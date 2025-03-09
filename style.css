@@ -42,6 +42,8 @@ body {
     width: 9rem;
     height:3rem;
     cursor: pointer;
+    /* background-color: transparent;
+    border: 1px solid #22223b; */
 }
 
 .landing-page-main-container .section-0 button a {
@@ -130,6 +132,43 @@ body {
     margin: 0 auto;
     padding: 20px;
     text-align: left; /* Align content to the left */
+}
+
+/* payment method */
+
+.payment-header {
+  /* font-size: 1.5rem; */
+  padding: 30px;
+  text-align: center;
+}
+
+.payment-main-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    margin-top: 4rem;
+}
+
+.payment-main-container form  {
+    width: 30%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    border-radius: 10px;
+}
+
+.payment-main-container form .payment-input-container, 
+.payment-main-container form .payment-select-container {
+    width: 100%;   
+}
+
+.payment-main-container form .payment-input-container input, 
+.payment-main-container form .payment-select-container select {
+    width: 100%;
+}
+
+.payment-button-container {
+    width: 100%;
 }
 
 /* Header */
