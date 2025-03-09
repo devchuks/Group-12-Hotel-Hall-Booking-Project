@@ -1,4 +1,3 @@
-// user_bookings.js
 document.addEventListener('DOMContentLoaded', function () {
     const bookingForm = document.getElementById('bookingForm');
     const paymentSection = document.getElementById('paymentSection');
@@ -66,8 +65,8 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // Handle booking cancellation
-    // user_bookings.js
+// Handle booking cancellation
+
 window.cancelBooking = function (bookingId) {
     if (confirm('Are you sure you want to cancel this booking? You will receive a 50% refund.')) {
         fetch('cancel_booking.php', {

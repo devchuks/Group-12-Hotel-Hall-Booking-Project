@@ -56,8 +56,6 @@ try {
     <h2>Welcome, User!</h2>
     <button onclick="logout()">Logout</button>
 
-    
-
     <!-- Booking Form -->
     <h3>Book a Hall</h3>
     <form id="bookingForm">

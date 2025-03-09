@@ -24,11 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             echo json_encode(['status' => 'success', 'message' => 'Booking successful!', 'booking_id' => $booking_id]);
         } else {
             echo json_encode(['status' => 'error', 'message' => 'Failed to book the hall.']);
-        }
-
-        
-
-        
+        } 
     }
 }
 ?>
