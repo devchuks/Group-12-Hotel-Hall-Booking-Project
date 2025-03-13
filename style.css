@@ -350,6 +350,7 @@ form label {
 }
 
 form input, form select {
+
     padding: 10px;
     margin-bottom: 12px;
     border: 1px solid #ccc;
@@ -392,9 +393,11 @@ footer {
 }
 
 #hallCapacities {
-    width: auto; /* Makes the table as wide as its content */
+    width: 30%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    /* width: auto; Makes the table as wide as its content */
     margin-left: 0; /* Aligns the table to the left */
-    margin-top: 10px; /* Adds some spacing from the title */
+    /* margin-top: 10px; Adds some spacing from the title */
     border-collapse: collapse;
 }
 
@@ -408,6 +411,7 @@ footer {
     background: #22223b;
     color: #fff;
     font-weight: bold;
+    /* border-radius: .5rem .5rem 0 0; */
 }
 
 #hallCapacities tr:hover {
