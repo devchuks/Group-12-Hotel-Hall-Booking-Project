@@ -29,63 +29,74 @@ try {
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h2>Welcome, Manager!</h2>
+
+  <header class="manager-dashboard-header">
+    <h2>Manager Dashboard</h2>
     <button onclick="logout()">Logout</button>
+  </header>
 
     <!-- Hall Capacities -->
-<h3>Hall Capacities</h3>
-<table id="hallCapacities">
-    <thead>
-        <tr>
-            <th>Hall</th>
-            <th>Capacity</th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php
-        $stmt = $pdo->prepare("SELECT * FROM halls");
-        $stmt->execute();
-        $halls = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        foreach ($halls as $hall): ?>
-            <tr>
-                <td><?= htmlspecialchars($hall['name']) ?></td>
-                <td><?= htmlspecialchars($hall['capacity']) ?></td>
-            </tr>
-        <?php endforeach; ?>
-    </tbody>
-</table>
+<div class="hall-capacities-container">
+    <h3>Hall Capacities</h3>
+    <div>
+        <table id="hallCapacities">
+            <thead>
+                <tr>
+                    <th>Hall</th>
+                    <th>Capacity</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                $stmt = $pdo->prepare("SELECT * FROM halls");
+                $stmt->execute();
+                $halls = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                foreach ($halls as $hall): ?>
+                    <tr>
+                        <td><?= htmlspecialchars($hall['name']) ?></td>
+                        <td><?= htmlspecialchars($hall['capacity']) ?></td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+</div>
 
     <!-- All Bookings -->
+    <div class="all-bookings-container">
     <h3>All Bookings</h3>
-    <table id="bookingsTable">
-        <thead>
-            <tr>
-                <th>User</th>
-                <th>Hall</th>
-                <th>Date</th>
-                <th>Session</th>
-                <th>Status</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php foreach ($bookings as $booking): ?>
+    <div>
+        <table id="bookingsTable">
+            <thead>
                 <tr>
-                    <td><?= htmlspecialchars($booking['user_name']) ?></td>
-                    <td><?= htmlspecialchars($booking['hall_name']) ?></td>
-                    <td><?= htmlspecialchars($booking['date']) ?></td>
-                    <td><?= htmlspecialchars($booking['session']) ?></td>
-                    <td><?= htmlspecialchars($booking['status']) ?></td>
-                    <td>
-                        <?php if ($booking['status'] === 'pending'): ?>
-                            <button onclick="approveBooking(<?= $booking['id'] ?>)">Approve</button>
-                            <button onclick="declineBooking(<?= $booking['id'] ?>)">Decline</button>
-                        <?php endif; ?>
-                    </td>
+                    <th>User</th>
+                    <th>Hall</th>
+                    <th>Date</th>
+                    <th>Session</th>
+                    <th>Status</th>
+                    <th>Action</th>
                 </tr>
-            <?php endforeach; ?>
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                <?php foreach ($bookings as $booking): ?>
+                    <tr>
+                        <td><?= htmlspecialchars($booking['user_name']) ?></td>
+                        <td><?= htmlspecialchars($booking['hall_name']) ?></td>
+                        <td><?= htmlspecialchars($booking['date']) ?></td>
+                        <td><?= htmlspecialchars($booking['session']) ?></td>
+                        <td><?= htmlspecialchars($booking['status']) ?></td>
+                        <td>
+                            <?php if ($booking['status'] === 'pending'): ?>
+                                <button onclick="approveBooking(<?= $booking['id'] ?>)">Approve</button>
+                                <button onclick="declineBooking(<?= $booking['id'] ?>)">Decline</button>
+                            <?php endif; ?>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+    </div>
     <script src="logout.js"></script>
     <script src="manager.js"></script>
 </body>

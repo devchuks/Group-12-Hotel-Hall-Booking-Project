@@ -53,121 +53,134 @@ try {
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h2>Welcome, User!</h2>
-    <button onclick="logout()">Logout</button>
+    <header class="user-dashboard-header">
+        <h2>User Dashboard</h2>
+            <button onclick="logout()">Logout</button>      
+    </header>
 
     <!-- Booking Form -->
-    <h3>Book a Hall</h3>
-    <form id="bookingForm">
-        <label for="hall">Select Hall:</label>
-        <select id="hall" name="hall" required>
-            <option value="1">Hall A</option>
-            <option value="2">Hall B</option>
-            <option value="3">Hall C</option>
-        </select>
-
-        <label for="date">Select Date:</label>
-        <input type="date" id="date" name="date" required>
-
-        <label for="session">Select Session:</label>
-        <select id="session" name="session" required>
-            <option value="morning">Morning</option>
-            <option value="afternoon">Afternoon</option>
-            <option value="both">Both</option>
-        </select>
-
-        <button type="submit">Book Now</button>
-    </form>
+    <h3 class="book-a-hall">Book a Hall</h3>
+    <div class="booking-form-container">
+        <form id="bookingForm" class="booking-form">
+            <label for="hall">Select Hall:</label>
+            <select id="hall" name="hall" required>
+                <option value="1">Hall A</option>
+                <option value="2">Hall B</option>
+                <option value="3">Hall C</option>
+            </select>
+    
+            <label for="date">Select Date:</label>
+            <input type="date" id="date" name="date" required>
+    
+            <label for="session">Select Session:</label>
+            <select id="session" name="session" required>
+                <option value="morning">Morning</option>
+                <option value="afternoon">Afternoon</option>
+                <option value="both">Both</option>
+            </select>
+    
+            <button type="submit">Book Now</button>
+        </form>
+    </div>
 
    <!-- Payment Form -->
-<div id="paymentSection" style="display: none;">
+   <div class="payment-section-container" id="paymentSection" style="display: none;">
     <h3>Make a Payment</h3>
-    <form id="paymentForm">
-        <label for="booking_id">Booking ID:</label>
-        <input type="number" id="booking_id" name="booking_id" required readonly>
-
-        <label for="amount">Amount:</label>
-        <input type="number" id="amount" name="amount" required>
-
-        <label for="payment_method">Payment Method:</label>
-        <select id="payment_method" name="payment_method" required>
-            <option value="paypal">PayPal</option>
-            <option value="stripe">Stripe</option>
-        </select>
-
-        <button type="submit">Pay Now</button>
-    </form>
-</div>
+    <div class="payment-form-container">
+        <form id="paymentForm">
+            <label for="booking_id">Booking ID:</label>
+            <input type="number" id="booking_id" name="booking_id" required readonly>
+    
+            <label for="amount">Amount:</label>
+            <input type="number" id="amount" name="amount" required>
+    
+            <label for="payment_method">Payment Method:</label>
+            <select id="payment_method" name="payment_method" required>
+                <option value="paypal">PayPal</option>
+                <option value="stripe">Stripe</option>
+            </select>
+    
+            <button type="submit">Pay Now</button>
+        </form>
+    </div>
+  </div>
 
     <!-- Upcoming Bookings -->
-<h3>Upcoming Bookings</h3>
-<?php if (!empty($upcoming_bookings)): ?>
-    <table id="upcomingBookings">
-        <thead>
-            <tr>
-                <th>Hall</th>
-                <th>Date</th>
-                <th>Session</th>
-                <th>Status</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php foreach ($upcoming_bookings as $booking): ?>
-                <tr>
-                    <td><?= htmlspecialchars($booking['hall_name']) ?></td>
-                    <td><?= htmlspecialchars($booking['date']) ?></td>
-                    <td><?= htmlspecialchars($booking['session']) ?></td>
-                    <td><?= htmlspecialchars($booking['status']) ?></td>
-                    <td>
-                        <?php if ($booking['status'] === 'approved'): ?>
-                            <button onclick="cancelBooking(<?= $booking['id'] ?>)">Cancel</button>
-                        <?php endif; ?>
-                    </td>
-                </tr>
-            <?php endforeach; ?>
-        </tbody>
-    </table>
-<?php else: ?>
-    <p>No upcoming bookings found.</p>
-<?php endif; ?>
-
-    <!-- Past or Cancelled Bookings -->
-<h3>Past or Cancelled Bookings</h3>
-<?php if (!empty($past_bookings)): ?>
-    <table id="pastBookings">
-        <thead>
-            <tr>
-                <th>Hall</th>
-                <th>Date</th>
-                <th>Session</th>
-                <th>Status</th>
-                <th>Original Price</th>
-                <th>Refunded Amount</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php foreach ($past_bookings as $booking): ?>
-                <tr>
-                    <td><?= htmlspecialchars($booking['hall_name']) ?></td>
-                    <td><?= htmlspecialchars($booking['date']) ?></td>
-                    <td><?= htmlspecialchars($booking['session']) ?></td>
-                    <td><?= htmlspecialchars($booking['status']) ?></td>
-                    <td>$<?= htmlspecialchars($booking['original_price'] ?? '0.00') ?></td>
-                    <td>
-                        <?php if ($booking['status'] === 'cancelled'): ?>
-                            $<?= htmlspecialchars($booking['refund_amount'] ?? '0.00') ?>
-                        <?php else: ?>
-                            N/A
-                        <?php endif; ?>
-                    </td>
-                </tr>
-            <?php endforeach; ?>
-        </tbody>
-    </table>
-<?php else: ?>
-    <p>No past or cancelled bookings found.</p>
-<?php endif; ?>
+<div class="bookings-container">
+ <h3>Upcoming Bookings</h3>
+ <div class="upcoming-bookings-container">
+     <?php if (!empty($upcoming_bookings)): ?>
+         <table id="upcomingBookings">
+             <thead>
+                 <tr>
+                     <th>Hall</th>
+                     <th>Date</th>
+                     <th>Session</th>
+                     <th>Status</th>
+                     <th>Action</th>
+                 </tr>
+             </thead>
+             <tbody>
+                 <?php foreach ($upcoming_bookings as $booking): ?>
+                     <tr>
+                         <td><?= htmlspecialchars($booking['hall_name']) ?></td>
+                         <td><?= htmlspecialchars($booking['date']) ?></td>
+                         <td><?= htmlspecialchars($booking['session']) ?></td>
+                         <td><?= htmlspecialchars($booking['status']) ?></td>
+                         <td>
+                             <?php if ($booking['status'] === 'approved'): ?>
+                                 <button onclick="cancelBooking(<?= $booking['id'] ?>)">Cancel</button>
+                             <?php endif; ?>
+                         </td>
+                     </tr>
+                 <?php endforeach; ?>
+             </tbody>
+         </table>
+     <?php else: ?>
+         <p>No upcoming bookings found.</p>
+     <?php endif; ?>
+ </div>
+    
+        <!-- Past or Cancelled Bookings -->
+    
+    <h3>Past or Cancelled Bookings</h3>
+    <div class="past-bookings-container">
+        <?php if (!empty($past_bookings)): ?>
+            <table id="pastBookings">
+                <thead>
+                    <tr>
+                        <th>Hall</th>
+                        <th>Date</th>
+                        <th>Session</th>
+                        <th>Status</th>
+                        <th>Original Price</th>
+                        <th>Refunded Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($past_bookings as $booking): ?>
+                        <tr>
+                            <td><?= htmlspecialchars($booking['hall_name']) ?></td>
+                            <td><?= htmlspecialchars($booking['date']) ?></td>
+                            <td><?= htmlspecialchars($booking['session']) ?></td>
+                            <td><?= htmlspecialchars($booking['status']) ?></td>
+                            <td>$<?= htmlspecialchars($booking['original_price'] ?? '0.00') ?></td>
+                            <td>
+                                <?php if ($booking['status'] === 'cancelled'): ?>
+                                    $<?= htmlspecialchars($booking['refund_amount'] ?? '0.00') ?>
+                                <?php else: ?>
+                                    N/A
+                                <?php endif; ?>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        <?php else: ?>
+            <p>No past or cancelled bookings found.</p>
+        <?php endif; ?>
+    </div>
+</div>
 
     <!-- Pass user_id to JavaScript -->
     <script>
